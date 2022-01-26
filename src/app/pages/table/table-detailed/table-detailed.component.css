@@ -1,0 +1,311 @@
+.fullViewBackground {
+    background-image: url("/assets/backgrounds/tableBackground.jpg");
+}
+
+.contentBodyHeaders {
+    position: relative;
+}
+
+.contentBodyHeaderButtonsContainer .customButtons:nth-child(2n) {
+    margin-left: 8px;
+}
+
+#sortMenuContainer,
+#filterMenuContainer {    
+    position: absolute;
+    top: 42px;    
+    z-index: 10;
+    border: 1px solid gray;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    backdrop-filter: none;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+#sortMenuContainer button,
+#filterMenuContainer button {
+    width: 100%;
+    margin: 0px;
+    padding: 10px;
+    float: left;
+    cursor: pointer;
+}
+
+#sortMenuContainer button:hover,
+#filterMenuContainer button:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#sortMenuContainer {
+    width: 100px;
+    right: 80px;
+}
+
+#filterMenuContainer {
+    width: 89px;
+    right: 8px;
+}
+
+
+
+.tableListsContainer {
+    width: 100%;
+    height: calc(100% - 64px);
+    padding-left: 12px;
+    padding-right: 12px;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.tableListsWrappers {
+    width: 310px;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.tableListsWrappers:not(:first-child) {
+    margin-left: 12px;
+}
+
+.tableListsContainers {
+    width: 100%;
+    max-height: 100%;
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+}
+
+.tableListsContainers:not(.createListContainers) {
+    background-color: #EBECF0;
+}
+
+.tableListsContainersTitles {
+    width: 100%;
+    padding: 10px 0px;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    word-break: break-all;
+}
+
+.tableListsContainersTitles input {
+    width: calc(100% - 25px);
+    height: 100%;
+    padding: 5px;
+    float: left;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+}
+
+.tableListsContainersTitles input:focus {
+    background-color: #FFFFFF;
+    border: 1px solid gray;
+    cursor: text;
+}
+
+.tableListsContainersTitles .customButtons {
+    width: 25px;
+    height: 28px;
+    float: left;
+    background-color: yellow;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 14px;
+}
+
+.tableListsTasksContainer {
+    width: 100%;
+    float: left;
+    overflow-y: scroll;
+}
+
+.tableListsContainersRows {
+    width: 100%;
+    height: 132px;
+    margin-bottom: 13px;
+    position: relative;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.expiredTaskTableListContainerRows {
+    background-color: #EB5757;
+}
+
+.tableListsContainersRows:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    background-image: url("/assets/icons/edit.png");
+    background-position: 264px 10px;
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+.tableListsContainersRows * {
+    float: left;
+    position: absolute;
+}
+
+/*.tableListsContainersRows input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #2d3436;
+    border-radius: 50%;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.tableListsContainersRows input[type="checkbox"]:checked {
+    background-color: #1B1F3A;
+    background-image: url("/assets/icons/tick.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 12px;
+}*/
+
+.tableListsContainersRowTitles {
+    max-width: 175px;
+    max-height: 80px;
+    top: 10px;
+    left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    word-break: break-all;
+    line-height: 20px;
+    color: #000000;
+}
+
+.tableListsContainersRowDeadlines {
+    margin-top: 3px;
+    top: 10px;
+    right: 10px;
+    font-size: 8pt;
+    line-height: 13px;
+    color: #52686C;
+}
+
+.employeeIcons {
+    bottom: 10px;
+    left: 10px;
+}
+
+.tableListsContainersRowsPriorities {
+    width: 22px;
+    height: 22px;
+    bottom: 10px;
+    right: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+.prioritiesLow {
+    border-top: 3px solid #4EAF8E;
+}
+
+.prioritiesLow .tableListsContainersRowsPriorities {
+    background-image: url("/assets/icons/lowPriority.png");
+}
+
+.prioritiesMedium {
+    border-top: 3px solid #F2C94C;
+}
+
+.prioritiesMedium .tableListsContainersRowsPriorities {
+    background-image: url("/assets/icons/mediumPriority.png");
+}
+
+.prioritiesHigh {
+    border-top: 3px solid #EB5757;
+}
+
+.prioritiesHigh .tableListsContainersRowsPriorities {
+    background-image: url("/assets/icons/highPriority.png");
+}
+
+.tableListsContainers .addButtons,
+.taskCreationContainers {
+    width: 100%;
+    float: left;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.tableListsContainers .addButtons {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 3px;
+}
+
+.tableListsContainers .addButtons:hover {
+    background-color: #DADBE2;
+}
+
+
+
+
+.listCreationContainers {
+    margin: 8px 0px;
+}
+
+.listCreationContainers *,
+.taskCreationContainers * {
+    float: left;
+}
+
+.listCreationContainers textarea,
+.taskCreationContainers textarea {
+    width: 100%;
+    height: 54px;
+    padding: 10px;
+    float: left;
+    outline: none;
+    border: none;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    resize: none;
+    font-size: 14px;
+}
+
+.listCreationContainers .filledButtons,
+.taskCreationContainers .filledButtons {
+    margin-top: 8px;
+}
+
+.closeButtons {
+    width: 28px;
+    height: 28px;
+    margin: 8px 0px 0px 8px;
+}
+
+
+
+
+
+.createListContainers {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.createListButtons {
+    width: 100%;
+    padding: 10px 5px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

@@ -1,0 +1,407 @@
+#taskCreationBaseContainer {
+    min-width: 300px;
+    width: calc(100% - 20px);
+    max-height: calc(100% - 40px);
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: scroll;
+    background-color: #EBECF0;
+    border-radius: 3px;
+}
+
+#taskCreationHeader {
+    width: 100%;
+    height: 80px;
+    padding: 12px 0px 8px;
+    float: left;
+    position: relative;
+}
+
+#taskCreationHeader .closeButtons {
+    width: 25px;
+    height: 25px;
+    margin: 0px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-size: 12px;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+#taskCreationHeader .closeButtons:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#taskCreationHeader span,
+#taskCreationHeader input {
+    width: calc(100% - 35px);
+    padding-left: 5px;
+    float: left;
+}
+
+.taskCreationHeaderTitles {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: transparent;
+    border: 1px solid transparent;
+    outline: none;
+}
+
+.taskCreationHeaderTitles:focus {
+    background-color: #FFFFFF;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+#taskCreationHeader span {
+    font-size: 14px;
+}
+
+
+
+#taskCreationBody {
+    width: 100%;
+    height: 100%;
+    float: left;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#taskCreationBodyMainColumn {
+    width: 100%;
+    height: 100%;
+}
+
+#taskCreationBodySideColumn {
+    min-width: 172px;
+    width: calc(100% - 470px);
+    height: 100%;
+    margin-left: 15px;
+}
+
+.taskCreationBodyMainColumTitles {
+    width: 100%;
+    float: left;
+    margin-bottom: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.taskCreationBodyMainColumTitles:not(:first-child) {
+    margin-top: 10px;
+}
+
+#taskCreationBody textarea,
+#taskCreationBody input,
+#taskCreationBody select {
+    width: 100%;
+    padding: 10px;
+    float: left;
+    border: 1px solid gray;
+    border-radius: 3px;    
+    outline: none;
+}
+
+#taskCreationBodyMainColumn textarea {
+    height: 80px;
+    resize: none;
+    line-height: 20px;
+}
+
+#taskCreationBodySideColumn input,
+#taskCreationBodySideColumn select {
+    margin-bottom: 10px;
+}
+
+.taskCreationBodySideColumnTitles {
+    width: 100%;
+    float: left;
+    margin-bottom: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.taskCreationDescriptionCharacters {
+    width: 100%;
+    min-height: 11px;
+    padding: 3px 5px;
+    float: left;
+    font-size: 11px;
+    line-height: 11px;
+    text-align: right;
+}
+
+#taskCreationTaskProgressBarContainer {
+    width: 100%;
+    height: 11px;
+    float: left;
+    margin: 5px 0px;
+}
+
+#taskCreationTaskProgressBarTitle {
+    width: 35px;
+    float: left;
+    font-size: 11px;
+    line-height: 11px;
+    text-align: center;
+}
+
+#taskCreationTaskProgressBarBase,
+#taskCreationTaskProgressBar
+{
+    height: 100%;
+    float: left;
+    border-radius: 4px;
+}
+
+#taskCreationTaskProgressBarBase {
+    width: calc(100% - 35px);    
+    background-color: gray;    
+}
+
+#taskCreationTaskProgressBar {
+    min-width: 0px;
+    max-width: 100%;
+    background-color: lightskyblue;
+}
+
+#taskCreationSubTasksContainer {
+    width: 100%;
+    float: left;
+}
+
+.taskCreationSubTaskRows {
+    width: 100%;
+    height: 36px;
+    float: left;
+    /*margin-top: 8px;
+    margin-bottom: 8px;*/
+}
+
+.taskCreationSubTaskRows:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+
+.taskCreationSubTaskRows:hover .taskCreationSubTaskButtonsContainers {
+    display: block;
+}
+
+
+.taskCreationSubTaskCheckboxContainers {
+    width: 35px;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+
+.taskCreationSubTaskCheckboxContainers input[type="checkbox"] {
+    margin: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.taskCreationSubTaskTitles {
+    width: calc(100% - 95px);
+    height: 100%;
+    float: left;
+    font-size: 14px;
+    line-height: 36px;
+}
+
+.taskCreationSubTaskButtonsContainers {
+    width: 60px;
+    height: 100%;
+    float: left;
+    display: none;
+}
+
+.taskCreationSubTaskButtonsContainers .customButtons {
+    width: 26px;
+    height: 26px;
+    float: left;
+    margin: 5px 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: transparent;
+    background-size: 16px;
+    border-radius: 3px;
+}
+
+.taskCreationSubTaskButtonsContainers .customButtons:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.subTaskCreationContainers {
+    width: 100%;
+    float: left;
+}
+
+.subTaskCreationContainers textarea {
+    width: 100%;
+    height: 54px !important;
+    padding: 10px;
+    float: left;
+}
+
+.subTaskCreationContainers .customButtons {
+    margin-top: 8px;
+    float: left;
+}
+
+.subTaskCreationContainers .closeButtons {
+    width: 28px;
+    height: 28px;
+    margin-left: 8px;
+    background-color: transparent;
+}
+
+.subTaskCreationContainers .closeButtons:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+#taskCreationSubTasksContainer > .addButtons {
+    
+    float: left;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 3px;    
+    font-size: 14px;
+    text-align: left;
+}
+
+
+
+
+#taskCreationAssigneeContainer {
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+#taskCreationAssigneeContainer input {
+    margin-bottom: 0px;
+}
+
+#taskCreationAssigneesResultsContainer {
+    width: 100%;
+    float: left;
+    position: absolute;
+    top: 37px;
+    left: 0px;
+    z-index: 2;
+    background-color: #FFFFFF;
+    border: 1px solid gray;
+    border-top: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.taskCreationAssigneesResultRows {
+    width: 100%;
+    height: 30px;
+    float: left;
+    cursor: pointer;
+}
+
+.taskCreationAssigneesResultRows:not(:first-child) {
+    border-top: 1px solid gray;
+}
+
+.taskCreationAssigneesResultRows img,
+#taskCreationAssigneesSelectedContainer img {
+    width: 30px;
+    height: 100%;
+    padding: 5px;
+    float: left;
+}
+
+.taskCreationAssigneesResultRows span,
+#taskCreationAssigneesSelectedContainer span {
+    height: 100%;
+    float: left;
+    font-size: 12px;
+    line-height: 30px;
+}
+
+.taskCreationAssigneesResultRows span {
+    width: calc(100% - 30px);
+}
+
+#taskCreationAssigneesSelectedContainer {
+    width: 100%;
+    height: 30px;
+    float: left;
+    margin: 5px 0px;
+}
+
+#taskCreationAssigneesSelectedContainer span {
+    width: calc(100% - 60px);
+}
+
+#taskCreationAssigneesSelectedContainer .deleteButtons {
+    width: 30px;
+    height: 30px;
+    float: left;
+    background-size: 14px;
+    background-color: transparent;
+    border-radius: 50%;
+}
+
+#taskCreationAssigneesSelectedContainer .deleteButtons:hover {
+    background-color: gray;
+}
+
+#taskCreationBodySideColumn > .deleteButtons {
+    width: 100%;
+    margin-top: 8px;
+    float: left;
+    background-color: #EB5757;;
+}
+
+#taskCreationBottomButtonsContainer {
+    width: 100%;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#taskCreationBottomButtonsContainer .customButtons {
+    height: 100%;
+    padding: 0px 12px;
+    font-size: 18px;
+    line-height: 32px;   
+}
+
+#taskCreationBottomButtonsContainer .customButtons:last-child {
+    margin-left: 8px;
+    background-color: rgba(9, 24, 55, 0.8);
+    border-radius: 3px;
+    color: #FFFFFF;
+}
+
+@media only screen and (min-width: 992px) {
+
+    #taskCreationBaseContainer {
+        width: 672px;
+    }
+
+    #taskCreationBodyMainColumn {
+        max-width: 455px;
+    }
+
+}

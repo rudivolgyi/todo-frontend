@@ -1,0 +1,87 @@
+<div class="popupWindows popupCloses" (click)="close($event)">
+    <div id="taskCreationBaseContainer" *ngIf="task !== null">
+        <form #taskForm="ngForm" appDeadline appAssigneeValidation>
+            <div id="taskCreationHeader">
+                <input type="text" class="taskCreationHeaderTitles" [(ngModel)]="task.title" #title="ngModel" name="title" minlength="1" maxlength="50" required appForbiddenName="bob">
+                <span>{{taskForm.errors | json}}</span>
+                <span class="taskCreationHeaderListTitles">a következő listában: {{listTitle}}</span>
+                <button class="customButtons closeButtons popupCloses" title="Bezárás" (click)="close($event)"></button>
+            </div>
+            <div id="taskCreationBody">
+                <div id="taskCreationBodyMainColumn">
+                    <span class="taskCreationBodyMainColumTitles">Leírás</span>
+                    <textarea [(ngModel)]="task.description" #description="ngModel" name="description" minlength="1" maxlength="250"></textarea>
+                    <span class="taskCreationDescriptionCharacters">250/<ng-container *ngIf="task.description !== null">{{task.description.length}}</ng-container><ng-container *ngIf="task.description === null">0</ng-container></span>
+                    <span class="taskCreationBodyMainColumTitles">Alfeladatok</span>
+                    <div id="taskCreationTaskProgressBarContainer">
+                        <span id="taskCreationTaskProgressBarTitle">{{donePercentage}}%</span>
+                        <div id="taskCreationTaskProgressBarBase">
+                            <div id="taskCreationTaskProgressBar" [ngStyle]="{ 'width': donePercentage + '%'}"></div>
+                        </div>
+                    </div>
+                    <div id="taskCreationSubTasksContainer">
+                        <ng-container *ngFor="let subtask of task.subTasks">
+                            <div class="taskCreationSubTaskRows" *ngIf="!subtask.editEnabled">
+                                <div class="taskCreationSubTaskCheckboxContainers">
+                                    <input type="checkbox" name="subtask.id" (change)="subTaskReadyToggle(subtask)" [checked]="subtask.isReady">
+                                </div>
+                                <span class="taskCreationSubTaskTitles" (click)="subtask.editEnabled = true">{{subtask.title}}</span>
+                                <div class="taskCreationSubTaskButtonsContainers">
+                                    <button class="customButtons editButtons" (click)="subtask.editEnabled" title="Szerkesztés"></button>
+                                    <button class="customButtons deleteButtons" (click)="removeSubTask(subtask)" title="Törlés"></button>
+                                    <!--<button class="customButtons deadlineButtons"></button>
+                                    <button class="customButtons personButtons"></button>-->
+                                </div>
+                            </div>
+                            <div class="subTaskCreationContainers" *ngIf="subtask.editEnabled">
+                                <textarea maxlength="50" [value]="subtask.title" #subtaskInput></textarea>
+                                <button class="customButtons filledButtons" (click)="editSubTask(subtask, subtaskInput.value); subtask.editEnabled = false">Mentés</button>
+                                <button class="customButtons closeButtons" (click)="subtask.editEnabled = false" title="Mégsem"></button>
+                            </div>
+                        </ng-container>
+                        <div class="subTaskCreationContainers" *ngIf="subTaskCreationEnabled">
+                            <textarea maxlength="50" placeholder="Adj címet az alfeladatnak..." #newSubTaskName></textarea>
+                            <button class="customButtons filledButtons" (click)="createSubTask(newSubTaskName.value)">Új alfeladat</button>
+                            <button class="customButtons closeButtons" (click)="subTaskCreationEnabled = false" title="Mégsem"></button>
+                        </div>
+                        <button class="iconedButtons addButtons customButtons" *ngIf="!subTaskCreationEnabled" (click)="subTaskCreationEnabled = true">Alfeladat hozzáadása</button>
+                    </div>
+                </div>
+                <div id="taskCreationBodySideColumn">
+                    <span class="taskCreationBodySideColumnTitles">Határidő</span>
+                    <input type="date" [ngModel]="task.deadlineDate | date:'yyyy-MM-dd'" (ngModelChange)="task.deadlineDate=$event" #deadlineDate="ngModel" name="deadlineDate" min="{{minDate | date:'yyyy-MM-dd'}}">
+                    <span class="errorFields"><ng-container *ngIf="taskForm.errors && taskForm.errors.deadlineError">Csak jövőbeli dátum adható meg! (A mai nap későbbi időpontja megadható)</ng-container></span>
+                    <input type="time" [(ngModel)]="task.deadlineTime" #deadlineTime="ngModel" name="deadlineTime">
+                    <span class="taskCreationBodySideColumnTitles">Prioritás</span>
+                    <select [(ngModel)]="task.priority" #priority="ngModel" name="priority">
+                        <option [ngValue]="0">alacsony</option>
+                        <option [ngValue]="1">közepes</option>
+                        <option [ngValue]="2">magas</option>
+                    </select>
+                    <span class="taskCreationBodySideColumnTitles">Felelős</span>
+                    <div id="taskCreationAssigneeContainer">
+                        <input type="text" placeholder="Keresés..." (keyup)="searchAssignees()" #assigneeSearchInput>
+                        <div id="taskCreationAssigneesResultsContainer" *ngIf="assigneeSearchList.length !== 0">
+                            <div class="taskCreationAssigneesResultRows" *ngFor="let assignee of assigneeSearchList" (click)="selectAssignee(assignee)">
+                                <img src="https://freepikpsd.com/file/2019/10/avatar-png-icon-2-Transparent-Images.png">
+                                <span>{{assignee.name}}</span>
+                            </div>                            
+                        </div>
+                        <div id="taskCreationAssigneesSelectedContainer">
+                            <ng-container *ngIf="task.assignee !== undefined">
+                                <img src="https://freepikpsd.com/file/2019/10/avatar-png-icon-2-Transparent-Images.png">
+                                <span>{{task.assignee.name}}</span>
+                                <button class="customButtons deleteButtons" (click)="removeAssignee()" title="törlés"></button>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <button class="iconedButtons headerButtons customButtons deleteButtons" *ngIf="task.id !== undefined" (click)="deleteTask(task)">Feladat törlése</button>
+                </div>
+                <div id="taskCreationBottomButtonsContainer">
+                    <button class="customButtons popupCloses" (click)="close($event)" title="Mégsem">Mégsem</button>
+                    <button class="customButtons" type="submit" (click)="save()" title="Mentés" [disabled]="!taskForm.valid">Mentés</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

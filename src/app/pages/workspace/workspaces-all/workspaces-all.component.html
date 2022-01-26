@@ -1,0 +1,17 @@
+<div class="contentBodies">
+    <div class="contentBodyHeaders">
+        <input type="text" class="serachFields" placeholder="keresés...">
+        <a class="createButtons">új munkatér létrehozása</a>
+    </div>
+    <ng-container *ngIf="0 < workspaces.length; else notExsist">
+        <div id="workspacesContainer">
+            <a class="workspaceContainers" *ngFor="let workspace of workspaces" routerLink="/workspaces/detailed" [queryParams]="{ id: workspace.id }">                
+                <span class="workspaceContainerTitles">{{ workspace.title }}</span>                
+            </a>
+        </div>
+    </ng-container>
+    <ng-template #notExsist>
+        <span>Nincs megjeleníthető munkatér!</span>
+    </ng-template>
+</div>
+<div class="fullViewBackground"></div>

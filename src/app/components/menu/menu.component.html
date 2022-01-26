@@ -1,0 +1,26 @@
+<div id="menu">    
+    <div id="menuBody">
+        <div id="menuItemsContainer">
+            <a class="menuListContainers" routerLink="/today" routerLinkActive="menuActive" (click)="toggleMenu()">
+                <span class="menuListContainerTitles">Mai nap</span>
+                <span class="menuListContainerCounters">5</span>
+            </a>
+            <a class="menuListContainers" routerLink="/calendar" routerLinkActive="menuActive" (click)="toggleMenu()">
+                <span class="menuListContainerTitles">Naptár</span>
+                <span class="menuListContainerCounters"></span>
+            </a>
+            <a class="menuListContainers" routerLink="/assignedToMe" routerLinkActive="menuActive" (click)="toggleMenu()">
+                <span class="menuListContainerTitles">Hozzám rendelt</span>
+                <span class="menuListContainerCounters">10</span>
+            </a>
+            <a class="menuListContainers" routerLink="/workspaces/all" routerLinkActive="menuActive" (click)="toggleMenu()">
+                <span class="menuListContainerTitles">Munkaterek</span>
+                <span class="menuListContainerCounters">10</span>
+            </a>
+            <a class="menuListContainers" routerLink="/workspaces/own" routerLinkActive="menuActive" (click)="toggleMenu()">
+                <span class="menuListContainerTitles">Személyes munkatér</span>
+                <span class="menuListContainerCounters"></span>
+            </a>            
+        </div>
+    </div>
+</div>

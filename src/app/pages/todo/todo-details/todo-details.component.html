@@ -1,0 +1,10 @@
+<ng-container *ngIf="todo !== undefined; else notExsist">
+        <span>TODO Részletei</span><br>
+        <span>{{todo.title}}</span><br>
+        <span>{{todo.deadline | date: "YYYY.MM.dd hh:mm" }}</span><br>
+        <span>{{todo.priority}}</span><br>
+        <span>{{todo.isReady}}</span>
+</ng-container>
+<ng-template #notExsist>
+    <span>Nincs megjeleníthető tartalom!</span>
+</ng-template>

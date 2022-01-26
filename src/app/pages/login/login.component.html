@@ -1,0 +1,11 @@
+<div class="authContainer">
+    <div class="authContainers">
+        <form #loginForm="ngForm" (ngSubmit)="login()">
+            <input type="text" placeholder="E-mail" [(ngModel)]="loginModel.email" #email="ngModel" name="email" required>            
+            <input type="password" placeholder="Jelszó" [(ngModel)]="loginModel.password" #password="ngModel" name="password" required>
+            <span class="authErrorFields" *ngIf="invalidLogin">Helytelen email vagy jelszó!</span>
+            <button class="authButtons" type="submit" *ngIf="!invalidLogin">Bejelentkezés</button>
+            <a class="authBottomButtons" routerLink="/registration">Regisztráció</a>
+        </form>
+    </div>
+</div>

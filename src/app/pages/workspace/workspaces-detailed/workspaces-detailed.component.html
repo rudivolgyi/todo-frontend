@@ -1,0 +1,13 @@
+<div class="contentBodies">
+    <div class="contentBodyHeaders">
+        <input type="text" class="serachFields" placeholder="keresés...">
+        <span class="contentBodyHeaderTitles">{{ workspace.title }} MUNKATÉR</span>
+        <a class="createButtons">új tábla létrehozása</a>
+    </div>
+    <div class="workspaceTablesContainer">
+        <a class="workspaceTablesContainers" *ngFor="let table of workspace.tables" routerLink="/tables/detailed" [queryParams]="{ id: table.id }">                
+            <span class="workspaceTableContainerTitles">{{ table.title }}</span>                
+        </a>
+    </div>
+</div>
+<div class="fullViewBackground"></div>

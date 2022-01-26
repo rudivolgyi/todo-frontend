@@ -1,0 +1,60 @@
+<ng-container *ngIf="table !== undefined; else notExsist">
+    <div class="contentBodies">
+        <div class="contentBodyHeaders">
+            <span class="contentBodyHeaderTitles headerButtons">{{ table.title }}</span>
+            <div class="contentBodyHeaderButtonsContainer">
+                <!--<button id="taskSortButton" class="iconedButtons sortButtons headerButtons customButtons">Rendezés</button>
+                <div id="sortMenuContainer">
+                    <span>Összes</span>
+                    <span>Kész</span>
+                    <span>Todo</span>
+                </div>-->
+                <button id="taskFilterButton" class="iconedButtons filterButtons headerButtons customButtons">Szűrő</button>
+                <div id="filterMenuContainer" *ngIf="isFilterMenuOpened">
+                    <button class="customButtons" (click)="resetFilters()">Nincs</button>
+                    <button class="customButtons" (click)="filterTableByStatus(true)">Kész</button>
+                    <button class="customButtons" (click)="filterTableByStatus(false)">Hátravan</button>
+                </div>
+            </div>
+        </div>
+        <div class="tableListsContainer">
+            <div class="tableListsWrappers" *ngFor="let list of table.lists">
+                <div class="tableListsContainers">
+                    <div class="tableListsContainersTitles">
+                        <input type="text" [(ngModel)]="list.title" (change)="editList(list)">
+                        <button class="customButtons contextMenuButtons"></button>
+                    </div>
+                    <div class="tableListsTasksContainer">
+                        <div class="tableListsContainersRows" *ngFor="let task of list.tasks" [ngClass]="{'prioritiesLow': task.priority === 0, 'prioritiesMedium': task.priority === 1, 'prioritiesHigh': task.priority === 2, 'expiredTaskTableListContainerRows': isExpired(task)}" (click)="enableEdit(task)">
+                            <span class="tableListsContainersRowTitles">{{ task.title }}</span>
+                            <span class="tableListsContainersRowDeadlines">határidő: {{ task.deadlineDate | date:"YYYY.MM.dd"}}<ng-container *ngIf="task.deadlineTime !== null"> | {{ task.deadlineTime }}</ng-container></span>
+                            <div class="employeeIcons"></div>
+                            <div class="tableListsContainersRowsPriorities"></div>
+                        </div>
+                    </div>
+                    <div class="taskCreationContainers" *ngIf="list.isTaskCreationEnabled">
+                        <textarea maxlength="50" placeholder="Adj címet a feladatnak..." #newTaskName></textarea>
+                        <button class="customButtons filledButtons" (click)="saveNewTask(list.id, newTaskName.value)">Új feladat</button>
+                        <button class="customButtons closeButtons" (click)="list.isTaskCreationEnabled = false"></button>
+                    </div>
+                    <button class="iconedButtons addButtons customButtons" *ngIf="!list.isTaskCreationEnabled" (click)="list.isTaskCreationEnabled = true">Feladat hozzáadása</button>
+                </div>
+            </div>
+            <div class="tableListsWrappers">
+                <div class="tableListsContainers" [ngClass]="{'createListContainers': !isListCreationAllowed}">
+                    <button class="createListButtons" (click)="isListCreationAllowed = true" *ngIf="!isListCreationAllowed">+ Lista létrehozása</button>
+                    <div class="listCreationContainers" *ngIf="isListCreationAllowed">
+                        <textarea maxlength="50" placeholder="Adj címet a listának..." #newListName></textarea>
+                        <button class="customButtons filledButtons" (click)="saveNewList(newListName.value)">Új lista</button>
+                        <button class="customButtons closeButtons" (click)="isListCreationAllowed = false"></button>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-template #notExsist>
+    <span>Nincs megjeleníthető tartalom!</span>
+</ng-template>
+<div class="fullViewBackground"></div>
+<app-create-task *ngIf="isEditAllowed" [task]="editableTask" [listTitle]="editableTaskListTitle" (closePopup)="disableEdit()"></app-create-task>

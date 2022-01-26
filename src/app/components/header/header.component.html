@@ -1,0 +1,13 @@
+<button class="customButtons menuButtons" (click)="toggleMenu()"></button>
+<span id="headerTitle">2Do App</span>
+<div id="headerProfile">
+    <img src="https://freepikpsd.com/file/2019/10/avatar-png-icon-2-Transparent-Images.png" id="headerProfileImage">
+    <div id="headerMenu" *ngIf="isHeaderMenuOpened">
+        <div id="headerProfileContainer">
+            <img src="https://freepikpsd.com/file/2019/10/avatar-png-icon-2-Transparent-Images.png">
+            <span id="headerProfileContainerName">{{user.name}}</span>
+            <span id="headerProfileContainerEmail">{{user.email}}</span>
+        </div>
+        <button class="customButtons" title="Kilépés" (click)="logout()">Kilépés</button>
+    </div>
+</div>
