@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         
         this.invalidLogin = false;
 
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/workspaces/all"]);
       }
       catch {
         this.invalidLoginProcess();

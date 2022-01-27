@@ -6,13 +6,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './components/menu/menu.component';
-import { TodoDetailsComponent } from './pages/todo/todo-details/todo-details.component';
-import { TodoOwnsComponent } from './pages/todo/todo-owns/todo-owns.component';
-import { TodoUploadComponent } from './pages/todo/todo-upload/todo-upload.component';
 import { WorkspacesAllComponent } from './pages/workspace/workspaces-all/workspaces-all.component';
 import { WorkspacesDetailedComponent } from './pages/workspace/workspaces-detailed/workspaces-detailed.component';
 import { TableDetailedComponent } from './pages/table/table-detailed/table-detailed.component';
@@ -35,12 +31,8 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
     ProfileComponent,
     MenuComponent,
-    TodoDetailsComponent,
-    TodoOwnsComponent,
-    TodoUploadComponent,
     WorkspacesAllComponent,
     WorkspacesDetailedComponent,
     TableDetailedComponent,

@@ -8,6 +8,7 @@ export class MainTask extends BaseTask {
     priority: number = 0;
     subTasks: Array<SubTask> = [];
     taskListId!: string;
+    assigneeId!: string;
     assignee!: User | undefined;
 
 }

@@ -9,5 +9,6 @@ export class List {
     tableId!: string;
     
     isTaskCreationEnabled: boolean = false;
+    isContextMenuEnabled: boolean = false;
 
 }

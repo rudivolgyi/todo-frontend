@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AssignedToMeComponent } from './pages/assigned-to-me/assigned-to-me.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
-import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
@@ -16,7 +15,6 @@ import { AuthService } from './services/auth/auth.service';
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "registration", component: RegistrationComponent },
-  { path: "home", component: HomeComponent, canActivate: [AuthService] },
   { path: "profile", component: ProfileComponent, canActivate: [AuthService] },
   { path: "today", component: TodayComponent, canActivate: [AuthService] },
   { path: "calendar", component: CalendarComponent, canActivate: [AuthService] },

@@ -25,3 +25,69 @@
 .menuItems:not(:last-child) {
     border-bottom: 2px solid white;
 }
+
+/*-------------------------*/
+/*Menu lists*/
+/*-------------------------*/
+
+.menuListContainers {
+    width: 100%;
+    height: 30px;
+    margin: 5px 0px;
+    padding-left: 30px;
+    cursor: pointer;
+    background-position: 5px;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    border-left: 3px solid transparent;
+}
+
+.menuActive,
+.menuListContainers:hover {
+    border-left: 3px solid #FF7844;
+}
+
+.menuListContainers a,
+.menuListContainers span {
+    height: 100%;
+    float: left;
+    padding-top: 0px;
+    line-height: 30px;
+    color: #8B8B8B;
+}
+
+.menuListContainerTitles {
+    width: calc(100% - 30px);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.menuListContainerCounters {
+    width: 30px;
+    padding-right: 10px;
+    text-align: right;
+}
+
+/*-------------------------*/
+/*Menu icons*/
+/*-------------------------*/
+
+#menuListContainerWorkspaces {
+    background-image: url("/assets/icons/workspace.png");
+}
+
+#menuListContainerOwnWorkspaces {
+    background-image: url("/assets/icons/ownWorkspace.png");
+}
+
+#menuListContainerToday {
+    background-image: url("/assets/icons/today.png");
+}
+
+#menuListContainerCalendar {
+    background-image: url("/assets/icons/calendar.png");
+}
+
+#menuListContainerAssignedToMe {
+    background-image: url("/assets/icons/assignedToMe.png");
+}

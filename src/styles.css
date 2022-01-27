@@ -209,45 +209,6 @@ textarea {
 }
 
 /*-------------------------*/
-/*Menu lists*/
-/*-------------------------*/
-
-.menuListContainers {
-    width: 100%;
-    height: 30px;
-    margin: 5px 0px;
-    padding-left: 30px;
-    cursor: pointer;
-    border-left: 3px solid transparent;
-}
-
-.menuActive,
-.menuListContainers:hover {
-    border-left: 3px solid #FF7844;
-}
-
-.menuListContainers a,
-.menuListContainers span {
-    height: 100%;
-    float: left;
-    padding-top: 0px;
-    line-height: 30px;
-    color: #8B8B8B;
-}
-
-.menuListContainerTitles {
-    width: calc(100% - 30px);
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.menuListContainerCounters {
-    width: 30px;
-    padding-right: 10px;
-    text-align: right;
-}
-
-/*-------------------------*/
 /*Content*/
 /*-------------------------*/
 

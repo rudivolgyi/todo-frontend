@@ -22,13 +22,16 @@
                 <div class="tableListsContainers">
                     <div class="tableListsContainersTitles">
                         <input type="text" [(ngModel)]="list.title" (change)="editList(list)">
-                        <button class="customButtons contextMenuButtons"></button>
+                        <button class="customButtons contextMenuButtons" (click)="list.isContextMenuEnabled = true"></button>
+                        <div class="tableListsContextMenuContainers" *ngIf="list.isContextMenuEnabled">
+                            <button class="customButtons iconedButtons deleteButtons" (click)="deleteList(list)">Törlés</button>
+                        </div>
                     </div>
                     <div class="tableListsTasksContainer">
                         <div class="tableListsContainersRows" *ngFor="let task of list.tasks" [ngClass]="{'prioritiesLow': task.priority === 0, 'prioritiesMedium': task.priority === 1, 'prioritiesHigh': task.priority === 2, 'expiredTaskTableListContainerRows': isExpired(task)}" (click)="enableEdit(task)">
                             <span class="tableListsContainersRowTitles">{{ task.title }}</span>
                             <span class="tableListsContainersRowDeadlines">határidő: {{ task.deadlineDate | date:"YYYY.MM.dd"}}<ng-container *ngIf="task.deadlineTime !== null"> | {{ task.deadlineTime }}</ng-container></span>
-                            <div class="employeeIcons"></div>
+                            <div class="employeeIcons" [title]="task.assignee !== undefined ? task.assignee.name : 'Hozzárendelt személy'"></div>
                             <div class="tableListsContainersRowsPriorities"></div>
                         </div>
                     </div>

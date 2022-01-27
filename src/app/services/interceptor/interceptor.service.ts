@@ -13,7 +13,8 @@ export class InterceptorService implements HttpInterceptor {
       
     return next.handle(req.clone({ 
       setHeaders: {
-        'Authorization': 'Bearer ' + this.getToken()
+        "Authorization": "Bearer " + this.getToken(),
+        "Content-Type": "application/json"
       }
     }));
   }

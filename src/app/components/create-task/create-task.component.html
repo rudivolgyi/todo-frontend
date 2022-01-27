@@ -1,9 +1,8 @@
 <div class="popupWindows popupCloses" (click)="close($event)">
     <div id="taskCreationBaseContainer" *ngIf="task !== null">
-        <form #taskForm="ngForm" appDeadline appAssigneeValidation>
+        <form #taskForm="ngForm" appDeadline>
             <div id="taskCreationHeader">
-                <input type="text" class="taskCreationHeaderTitles" [(ngModel)]="task.title" #title="ngModel" name="title" minlength="1" maxlength="50" required appForbiddenName="bob">
-                <span>{{taskForm.errors | json}}</span>
+                <input type="text" class="taskCreationHeaderTitles" [(ngModel)]="task.title" #title="ngModel" name="title" minlength="1" maxlength="50" required>
                 <span class="taskCreationHeaderListTitles">a következő listában: {{listTitle}}</span>
                 <button class="customButtons closeButtons popupCloses" title="Bezárás" (click)="close($event)"></button>
             </div>
@@ -29,8 +28,6 @@
                                 <div class="taskCreationSubTaskButtonsContainers">
                                     <button class="customButtons editButtons" (click)="subtask.editEnabled" title="Szerkesztés"></button>
                                     <button class="customButtons deleteButtons" (click)="removeSubTask(subtask)" title="Törlés"></button>
-                                    <!--<button class="customButtons deadlineButtons"></button>
-                                    <button class="customButtons personButtons"></button>-->
                                 </div>
                             </div>
                             <div class="subTaskCreationContainers" *ngIf="subtask.editEnabled">

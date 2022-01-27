@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class BackendService {
 
   public static url: string = "http://localhost:37608/api/";
+  //public static url: string = "https://api.rudivolgyi.com/api/";
 
   constructor(private http: HttpClient) { }
 

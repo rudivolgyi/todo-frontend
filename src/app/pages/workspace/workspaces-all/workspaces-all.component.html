@@ -1,7 +1,9 @@
 <div class="contentBodies">
     <div class="contentBodyHeaders">
-        <input type="text" class="serachFields" placeholder="keresés...">
-        <a class="createButtons">új munkatér létrehozása</a>
+        <span class="contentBodyHeaderTitles headerButtons">Munkaterek</span>
+        <div class="contentBodyHeaderButtonsContainer">
+            <button id="taskFilterButton" class="iconedButtons filterButtons headerButtons customButtons">Szűrő</button>
+        </div>
     </div>
     <ng-container *ngIf="0 < workspaces.length; else notExsist">
         <div id="workspacesContainer">

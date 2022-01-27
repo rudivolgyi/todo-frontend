@@ -117,6 +117,13 @@ export class TableDetailedComponent implements OnInit {
     this.getTable(this.table.id, true);
   }
 
+  public async deleteList(list: List): Promise<any> {
+
+    await this.listService.delete(list.id);
+    
+    this.getTable(this.table.id);
+  }
+
   @HostListener("document:click", ["$event"])
   public onClick(event: any) {
 
