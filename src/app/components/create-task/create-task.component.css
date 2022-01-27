@@ -181,6 +181,11 @@
     float: left;
 }
 
+#taskCreationSubTasksContainer .errorFields {
+    margin: 8px 0px;
+    text-align: center;
+}
+
 .taskCreationSubTaskRows {
     width: 100%;
     height: 36px;

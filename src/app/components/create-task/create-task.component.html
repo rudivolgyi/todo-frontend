@@ -36,6 +36,9 @@
                                 <button class="customButtons closeButtons" (click)="subtask.editEnabled = false" title="Mégsem"></button>
                             </div>
                         </ng-container>
+                        <ng-container *ngIf="task.subTasks.length === 0">
+                            <span class="errorFields">Legalább egy alfeladat rögzítése kötelező!</span>
+                        </ng-container>
                         <div class="subTaskCreationContainers" *ngIf="subTaskCreationEnabled">
                             <textarea maxlength="50" placeholder="Adj címet az alfeladatnak..." #newSubTaskName></textarea>
                             <button class="customButtons filledButtons" (click)="createSubTask(newSubTaskName.value)">Új alfeladat</button>
@@ -76,7 +79,7 @@
                 </div>
                 <div id="taskCreationBottomButtonsContainer">
                     <button class="customButtons popupCloses" (click)="close($event)" title="Mégsem">Mégsem</button>
-                    <button class="customButtons" type="submit" (click)="save()" title="Mentés" [disabled]="!taskForm.valid">Mentés</button>
+                    <button class="customButtons" type="submit" (click)="save()" title="Mentés" [disabled]="!taskForm.valid || !isOtherDataValid()">Mentés</button>
                 </div>
             </div>
         </form>

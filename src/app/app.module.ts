@@ -6,7 +6,6 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
-import { ProfileComponent } from './pages/profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './components/menu/menu.component';
 import { WorkspacesAllComponent } from './pages/workspace/workspaces-all/workspaces-all.component';
@@ -31,7 +30,6 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     LoginComponent,
-    ProfileComponent,
     MenuComponent,
     WorkspacesAllComponent,
     WorkspacesDetailedComponent,

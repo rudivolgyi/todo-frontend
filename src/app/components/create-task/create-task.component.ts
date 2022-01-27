@@ -139,6 +139,15 @@ export class CreateTaskComponent implements OnInit {
     this.closePopup.emit();
   }
 
+  public isOtherDataValid(): boolean {
+
+    if (this.task.assignee !== null && this.task.assignee !== undefined && 0 < this.task.subTasks.length) {
+      return true;
+    }
+
+    return false;
+  }
+
   @HostListener("document:click", ["$event"])
   public onClick(event: any) {
 

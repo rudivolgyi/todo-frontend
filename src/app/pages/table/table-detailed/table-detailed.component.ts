@@ -72,9 +72,6 @@ export class TableDetailedComponent implements OnInit {
       newTask.taskListId = listId;
       
       this.enableEdit(newTask);
-
-      //await this.mainTaskService.upload(newTask);
-      //this.getTable(this.table.id);
     }
   }
 
@@ -132,6 +129,12 @@ export class TableDetailedComponent implements OnInit {
     }
     else {
       this.isFilterMenuOpened = false;
+    }    
+
+    if (!event.target.classList.contains("contextMenuButtons")) {      
+      this.table.lists.forEach(l => {
+        l.isContextMenuEnabled = false;
+      });
     }
   }
 
@@ -164,7 +167,20 @@ export class TableDetailedComponent implements OnInit {
 
       return false;
     });
+  }
 
+  public enableListMenu(list: List) {
+
+    if (list.isContextMenuEnabled) {
+      list.isContextMenuEnabled = false;
+    }
+    else {
+      this.table.lists.forEach(l => {
+        l.isContextMenuEnabled = false;
+      });
+
+      list.isContextMenuEnabled = true;
+    }
   }
 
 }
