@@ -51,11 +51,7 @@ export class CreateTaskComponent implements OnInit {
     }
 
     for (let subtask of this.task.subTasks) {
-      if (subtask.id === undefined) {
-        subtask.mainTaskId = this.task.id;
-        await this.subTaskService.upload(subtask);
-      }
-      else {
+      if (subtask.id !== undefined) {
         await this.subTaskService.edit(subtask.id, subtask);
       }
     }
