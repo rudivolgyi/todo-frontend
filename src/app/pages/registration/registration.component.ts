@@ -22,14 +22,12 @@ export class RegistrationComponent implements OnInit {
     try {
       let response = await this.usersService.upload(this.userModel);
 
-      if (response.status !== null && response.status === false) {
-        this.invalidRegistrationProcess();
-        return;
+      if (response === null) {
+        this.router.navigate([""]);
       }
-      
-      this.invalidRegistration = false;
-
-      this.router.navigate([""]);
+      else {
+        throw new Error();
+      }
     }
     catch {
       this.invalidRegistrationProcess();

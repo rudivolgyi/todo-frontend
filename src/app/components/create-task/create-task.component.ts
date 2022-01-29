@@ -44,15 +44,19 @@ export class CreateTaskComponent implements OnInit {
     }
     else {
       await this.mainTaskService.edit(this.task.id, this.task);
-    }
-    
-    for (let deletableSubTask of this.deletableSubTasks) {
-      await this.subTaskService.delete(deletableSubTask.id);
-    }
 
-    for (let subtask of this.task.subTasks) {
-      if (subtask.id !== undefined) {
-        await this.subTaskService.edit(subtask.id, subtask);
+      for (let deletableSubTask of this.deletableSubTasks) {
+        await this.subTaskService.delete(deletableSubTask.id);
+      }
+  
+      for (let subtask of this.task.subTasks) {
+        if (subtask.id !== undefined) {
+          await this.subTaskService.edit(subtask.id, subtask);
+        }
+        else {
+          subtask.mainTaskId = this.task.id;
+          await this.subTaskService.upload(subtask);
+        }
       }
     }
 

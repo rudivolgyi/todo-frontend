@@ -30,7 +30,7 @@
                     <div class="tableListsTasksContainer">
                         <div class="tableListsContainersRows" *ngFor="let task of list.tasks" [ngClass]="{'prioritiesLow': task.priority === 0, 'prioritiesMedium': task.priority === 1, 'prioritiesHigh': task.priority === 2, 'expiredTaskTableListContainerRows': isExpired(task)}" (click)="enableEdit(task)">
                             <span class="tableListsContainersRowTitles">{{ task.title }}</span>
-                            <span class="tableListsContainersRowDeadlines">határidő: {{ task.deadlineDate | date:"YYYY.MM.dd"}}<ng-container *ngIf="task.deadlineTime !== null"> | {{ task.deadlineTime }}</ng-container></span>
+                            <span class="tableListsContainersRowDeadlines">határidő: {{ task.deadlineDate | date:"YYYY.MM.dd"}}<ng-container *ngIf="task.deadlineTime !== null && task.deadlineTime !== ''"> | {{ task.deadlineTime }}</ng-container></span>
                             <div class="employeeIcons" [title]="task.assignee !== undefined ? task.assignee.name : 'Hozzárendelt személy'"></div>
                             <div class="tableListsContainersRowsPriorities"></div>
                         </div>

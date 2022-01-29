@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from './models/auth/user.model';
+import { LoginService } from './services/backend/auth/login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -10,34 +11,27 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AppComponent implements OnInit {
   title = 'todo-frontend';
   
+  public user!: User | null;
   public isMenuOpened: boolean = true;
 
   @ViewChild("menu") menu!: ElementRef;
 
-  constructor(private jwtHelper: JwtHelperService, private router: Router) {
+  constructor(private router: Router, private loginService: LoginService) {
+      this.loginService.user.subscribe(x => {
+        
+        this.user = x;
 
+        if (!x) {
+          this.router.navigate([""]);
+        }
+      });
   }
 
   ngOnInit(): void {
-      this.isAuthorized();
-  }
-
-  public isAuthorized(): boolean {
-
-    const token: string | null = localStorage.getItem("jwt");
-
-    if (token && !this.jwtHelper.isTokenExpired(token)) {
-      return true;
-    }
-    else {
-      return false;
-    }
   }
 
   public logout() {
-    localStorage.removeItem("jwt");
-    localStorage.removeItem("refreshToken");
-
+    this.loginService.logout();
     this.router.navigate([""]);
   }
 

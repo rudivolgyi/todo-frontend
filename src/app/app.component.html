@@ -1,9 +1,9 @@
-<ng-container *ngIf="!isAuthorized(); else content">
+<ng-container *ngIf="!user; else content">
   <router-outlet></router-outlet>
 </ng-container>
 <ng-template #content>  
   <div id="header">
-    <app-header (logoutEvent)="logout()" (menuEvent)="toggleMenu()"></app-header>
+    <app-header [user]="user" (logoutEvent)="logout()" (menuEvent)="toggleMenu()"></app-header>
   </div>
   <div id="menu" #menu *ngIf="isMenuOpened">
     <app-menu (menuEvent)="toggleMenu()"></app-menu>

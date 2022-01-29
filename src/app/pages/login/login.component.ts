@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
       try {
         let response = await this.loginService.login(this.loginModel);
 
-        if (response.status !== null && response.status === false) {
+        if (response.token === null && response.refreshToken === null) {
           this.invalidLoginProcess();
           return;
         }
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
         
         this.invalidLogin = false;
 
+        await this.loginService.setUser();
         this.router.navigate(["/workspaces/all"]);
       }
       catch {

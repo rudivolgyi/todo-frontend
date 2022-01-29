@@ -2,7 +2,7 @@
 <span id="headerTitle">2Do App</span>
 <div id="headerProfile">
     <img src="https://freepikpsd.com/file/2019/10/avatar-png-icon-2-Transparent-Images.png" id="headerProfileImage">
-    <div id="headerMenu" *ngIf="isHeaderMenuOpened">
+    <div id="headerMenu" *ngIf="user && isHeaderMenuOpened">
         <div id="headerProfileContainer">
             <img src="https://freepikpsd.com/file/2019/10/avatar-png-icon-2-Transparent-Images.png">
             <span id="headerProfileContainerName">{{user.name}}</span>
