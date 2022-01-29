@@ -353,7 +353,7 @@
     margin: 5px 0px;
 }
 
-#taskCreationAssigneesSelectedContainer span {
+#taskCreationAssigneesSelectedContainer span:not(.errorFields) {
     width: calc(100% - 60px);
 }
 

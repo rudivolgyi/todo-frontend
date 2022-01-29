@@ -11,7 +11,7 @@
                     <span class="taskCreationBodyMainColumTitles">Leírás</span>
                     <textarea [(ngModel)]="task.description" #description="ngModel" name="description" minlength="1" maxlength="250"></textarea>
                     <span class="taskCreationDescriptionCharacters">250/<ng-container *ngIf="task.description !== null">{{task.description.length}}</ng-container><ng-container *ngIf="task.description === null">0</ng-container></span>
-                    <span class="taskCreationBodyMainColumTitles">Alfeladatok</span>
+                    <span class="taskCreationBodyMainColumTitles">Alfeladatok *</span>
                     <div id="taskCreationTaskProgressBarContainer">
                         <span id="taskCreationTaskProgressBarTitle">{{donePercentage}}%</span>
                         <div id="taskCreationTaskProgressBarBase">
@@ -58,7 +58,7 @@
                         <option [ngValue]="1">közepes</option>
                         <option [ngValue]="2">magas</option>
                     </select>
-                    <span class="taskCreationBodySideColumnTitles">Felelős</span>
+                    <span class="taskCreationBodySideColumnTitles">Felelős *</span>
                     <div id="taskCreationAssigneeContainer">
                         <input type="text" placeholder="Keresés..." (keyup)="searchAssignees()" #assigneeSearchInput>
                         <div id="taskCreationAssigneesResultsContainer" *ngIf="assigneeSearchList.length !== 0">
@@ -73,13 +73,16 @@
                                 <span>{{task.assignee.name}}</span>
                                 <button class="customButtons deleteButtons" (click)="removeAssignee()" title="törlés"></button>
                             </ng-container>
+                            <ng-container *ngIf="task.assignee === undefined">
+                                <span class="errorFields">Felelős rögzítése kötelező!</span>
+                            </ng-container>
                         </div>
                     </div>
                     <button class="iconedButtons headerButtons customButtons deleteButtons" *ngIf="task.id !== undefined" (click)="deleteTask(task)">Feladat törlése</button>
                 </div>
                 <div id="taskCreationBottomButtonsContainer">
                     <button class="customButtons popupCloses" (click)="close($event)" title="Mégsem">Mégsem</button>
-                    <button class="customButtons" type="submit" (click)="save()" title="Mentés" [disabled]="!taskForm.valid || !isOtherDataValid()">Mentés</button>
+                    <button class="customButtons" [ngClass]="{'disabledButtons': !taskForm.valid || !isOtherDataValid() }" type="submit" (click)="save()" title="Mentés" [disabled]="!taskForm.valid || !isOtherDataValid()">Mentés</button>
                 </div>
             </div>
         </form>

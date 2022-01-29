@@ -124,6 +124,10 @@ textarea {
     background-image: url("/assets/icons/sort.png");
 }
 
+.disabledButtons {
+    background-color: gray !important;
+}
+
 /*-------------------------*/
 /*Auth*/
 /*-------------------------*/

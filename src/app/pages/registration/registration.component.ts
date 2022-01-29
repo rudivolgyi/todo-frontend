@@ -12,6 +12,7 @@ export class RegistrationComponent implements OnInit {
 
   public userModel: User = new User();
   public invalidRegistration: boolean = false;
+  public disableButton: boolean = false;
 
   constructor(private router: Router, private usersService: UsersService) { }
 
@@ -20,6 +21,8 @@ export class RegistrationComponent implements OnInit {
 
   public async registration(): Promise<any> {
     try {
+      this.disableButton = true;
+
       let response = await this.usersService.upload(this.userModel);
 
       if (response === null) {
@@ -36,6 +39,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   private invalidRegistrationProcess(){
+    this.disableButton = false;
     this.invalidRegistration = true;
 
     setTimeout(
